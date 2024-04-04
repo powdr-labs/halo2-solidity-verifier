@@ -79,7 +79,7 @@ contract Halo2Verifier {
         bytes calldata proof,
         uint256[] calldata instances
     ) public returns (bool) {
-        assembly {
+        assembly ("memory-safe") {
             // Read EC point (x, y) at (proof_cptr, proof_cptr + 0x20),
             // and check if the point is on affine plane,
             // and store them in (hash_mptr, hash_mptr + 0x20).

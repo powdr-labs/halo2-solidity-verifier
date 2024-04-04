@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 contract Halo2VerifyingKey {
     constructor() {
-        assembly {
+        assembly ("memory-safe") {
             {%- for (name, chunk) in constants %}
             mstore({{ (32 * loop.index0)|hex_padded(4) }}, {{ chunk|hex_padded(64) }}) // {{ name }}
             {%- endfor %}
